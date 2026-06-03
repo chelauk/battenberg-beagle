@@ -15,7 +15,7 @@ RUN R -q -e 'remotes::install_github("igordot/copynumber")' && \
     R -q -e 'remotes::install_github("Wedge-lab/battenberg")'
 
 RUN mkdir -p /refs/battenberg_hg38 /data /work
-
+COPY test_install.R /usr/local/bin/test_install.R
 WORKDIR /work
 
 CMD ["/bin/bash"]
