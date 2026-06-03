@@ -1,4 +1,4 @@
-library(battenberg)
+library(Battenberg)
 library(ASCAT)
 
 cat("Battenberg loaded\n")
