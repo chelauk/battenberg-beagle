@@ -1,0 +1,26 @@
+name: battenberg
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - r-base=4.3
+  - r-remotes
+  - r-devtools
+  - r-biocmanager
+  - r-data.table
+  - r-dplyr
+  - r-ggplot2
+  - r-optparse
+  - r-gtools
+  - r-foreach
+  - r-doparallel
+  - bioconductor-genomicranges
+  - bioconductor-variantannotation
+  - cancerit-allelecount
+  - samtools
+  - htslib
+  - openjdk=8
+  - wget
+  - curl
+  - git
+  - unzip
