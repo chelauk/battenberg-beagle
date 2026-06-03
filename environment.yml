@@ -18,6 +18,7 @@ dependencies:
   - bioconductor-variantannotation
   - cancerit-allelecount
   - samtools
+  - impute2
   - htslib
   - openjdk=8
   - wget
