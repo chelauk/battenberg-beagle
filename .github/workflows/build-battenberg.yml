@@ -29,13 +29,13 @@ jobs:
       - name: Build Docker image
         run: |
           docker build \
-            -t ghcr.io/${{ github.repository_owner }}/battenberg-beagle:latest \
             -t ghcr.io/${{ github.repository_owner }}/battenberg-beagle:v0.2 \
-            .
+            -f battenberg/Dockerfile \
+            battenberg
 
       - name: Test Docker image
         run: |
-          docker run --rm ghcr.io/${{ github.repository_owner }}/battenberg-beagle:latest Rscript /usr/local/bin/test_install.R
+          docker run --rm ghcr.io/${{ github.repository_owner }}/battenberg-beagle:v0.2 Rscript /usr/local/bin/test_install.R
 
       - name: Push Docker image
         run: |
