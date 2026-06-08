@@ -39,5 +39,4 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker push ghcr.io/${{ github.repository_owner }}/battenberg-beagle:latest
           docker push ghcr.io/${{ github.repository_owner }}/battenberg-beagle:v0.2
