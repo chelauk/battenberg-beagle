@@ -1,0 +1,46 @@
+name: Build pysam image
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - "pysam/**"
+      - ".github/workflows/build-pysam.yml"
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  IMAGE: ghcr.io/${{ github.repository_owner }}/pysam:v0.1
+
+jobs:
+  build-docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            -t $IMAGE \
+            -f pysam/Dockerfile \
+            pysam
+
+      - name: Test Docker image
+        run: |
+          docker run --rm $IMAGE python -c "import pysam, numpy, pandas; import shutil; assert shutil.which('ps')"
+
+      - name: Push Docker image
+        run: |
+          docker push $IMAGE
